@@ -224,3 +224,30 @@ def max_frequency_word_counter(data):
 data="Twinkle Twinkle little star little star"
 max_frequency_word_counter(data)
 
+
+#PF-Assgn-57
+def prime(number):
+    return number > 1 and all(number % i != 0 for i in range(2, number))
+
+def rotations(num):
+    rotated = []
+
+    m = str(num)
+
+    for _ in m:
+        rotated.append(int(m))
+        m = m[1:] + m[0]
+
+    return rotated
+
+def prime_count(limit):
+    counter = 0 
+
+    for number in range(1, limit + 1):
+
+        if all(prime(rotation) for rotation in rotations(number)): 
+            counter += 1 
+
+    return counter
+
+print(prime_count(100))
